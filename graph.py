@@ -126,7 +126,8 @@ def dfs(g, beginnode = None):
                     queuenodes.append(nextto)
     return result
 
-def bellman_ford(g, beginnode):       
+def bellman_ford(g, beginnode):   
+	#I made this algorithm using the pseduocode found here http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm#Proof_of_correctness    
     distance = {}
     for eachnode in g.nodes():
         distance[eachnode] = float('inf')
@@ -177,7 +178,9 @@ if __name__ == "__main__":
             indegreemax = degreelist[i]["indegree"]
     
     print "Most Interacted: ", maxinteract["node"], "with", maxinteract["indegree"], "interactions"
-    print "Average: ", float(finalsum / len(vertices))
+    print "Depending on how interactions are counted, the average could be two different numbers"
+    print "Counting the interactions as the number of edges gives the following average: ", float(finalsum / len(vertices))
+    print "Counting the interactions as two interactions for every edge gives the following average: ", float(finalsum / (len(vertices)*2))
     
     sccs = graph_FB_undirected.components()
     sccnum = 0
@@ -236,11 +239,11 @@ if __name__ == "__main__":
     if doublecheck == True:
         print "Bonus: Path Found"
  
-    print "\nTest:\n"
-    filedata = read("test.txt", False)
-    graph_CS_directed = filedata[0]
-    vertices = filedata[1]
+    # print "\nTest:\n"
+    # filedata = read("test.txt", False)
+    # graph_CS_directed = filedata[0]
+    # vertices = filedata[1]
 
-    shortestpath = shortest_path(graph_CS_directed, "A", end_node="J")
+    # shortestpath = shortest_path(graph_CS_directed, "A", end_node="J")
 
-    print "Shortest Path: ", shortestpath
+    # print "Shortest Path: ", shortestpath
